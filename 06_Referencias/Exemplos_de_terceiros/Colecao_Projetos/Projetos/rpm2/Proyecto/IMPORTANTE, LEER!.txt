@@ -1,0 +1,34 @@
+
+Hola Amigo/a, recibe un saludo cordial desde la Ciudad de México. 
+
+Gracias por descargar.
+
+No sé si viste pero tengo 2 proyectos muy similares, el punto aquí está en la manera de contar las rotaciones, me refiero al sensor, en el video que viste, manejo un sensor de efecto hall (o de campo magnético), pero en otro video manejo un LED Láser y una fotocelda. Te dejo los links para que puedas darte el tiempo de verlos:
+
+Con sensor de efecto hall (campo magnético):
+
+https://www.youtube.com/watch?v=g2hQ3UmRmh0
+
+Con LED Láser y fotocelda, además de enviar mediciones por el puerto serial hacia la computadora:
+
+https://www.youtube.com/watch?v=vIB7et3Vx9Q
+
+Ambos videos así como su información son sin fines de lucro por lo que en este correo te adjunto los códigos de programación de ambos proyectos, fueron realizados con una placa de Arduino Nano en su versión del microcontrolador ATmega328, si lo vas a adaptar a Arduino UNO no hay ningún problema, sólo hay que cambiar los pines para el LCD y también para la lectura del ADC.
+
+Prácticamente cualquier persona con conocimientos de Arduino y programación sabría interpretar el código de los proyectos, pero aún así estoy a tus órdenes para cualquier duda técnica concreta.
+
+Como ya lo mencioné los proyectos son sin fines de lucro y es por eso que los códigos se te adjuntan sin problemas.
+
+Si quisieras una "ayudadita" extra entonces hablaríamos de:
+
+- Lista de material y diagrama gráfico de conexiones: $150 pesos MXN
+
+- Código de programación modificado específicamente para tus fines: $300 pesos MXN
+
+- O si lo prefieres, un Reporte escrito con todo lo anterior: $350 pesos MXN
+ 
+Podemos cotizarte un kit con todo incluido + programación + reporte escrito y manual + envío si así lo deseas.
+
+Sigo a la orden.
+
+Ing. José Luis Salguero

@@ -1,0 +1,13 @@
+Faça o seguinte:
+
+Library proteus__copie tudo que estiver nessa pasta e cole e substitua no seguinte caminho C:/arquivosdeprogramas/labcenterelectronics/proteus7professional/library.
+
+---------------------------------------------------------------------------------------
+
+Models proteus__copie tudo que estiver nessa pasta e cole e substitua no seguinte caminho C:/arquivosdeprogramas/labcenterelectronics/proteus7professional/models.
+
+----------------------------------------------------------------------------------------
+
+Schematics__copie tudo que estiver nessa pasta e cole e substitua no seguinte caminho C:/arquivosdeprogramas/labcenterelectronics/proteus7professional/samples/Schematic&PCBLayout.
+
+http://downtronica.blogspot.com

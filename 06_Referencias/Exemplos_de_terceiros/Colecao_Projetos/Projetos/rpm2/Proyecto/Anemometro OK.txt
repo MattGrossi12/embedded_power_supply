@@ -1,0 +1,59 @@
+// velocidade do vento
+
+
+#include <LiquidCrystal.h>
+int val;
+long last=0;
+int stat=HIGH;
+int stat2;
+#define PI 3.141592
+int contar=0;
+int sens=100; //
+int nPalas=3;//
+int milisegundos=200;//
+float radio=30;//
+float radioM=radio/1000;
+float circunferencia=2*PI*radioM;
+LiquidCrystal lcd(9, 8, 7, 6, 5, 4); 
+void setup()
+{
+Serial.begin(9600);
+lcd.begin(16, 2);
+lcd.clear();
+pinMode(13,OUTPUT);
+}
+void loop()
+{
+  val=analogRead(0);
+  if(val<sens)
+  stat=HIGH;
+  else
+  stat=LOW;
+  digitalWrite(13,stat);
+  if(stat2!=stat)
+  {
+  contar++;
+  stat2=stat;
+  }
+  if(millis()-last>=milisegundos)
+  {
+     int rps=((double)contar/nPalas)/2.0*1000.0/(milisegundos);
+     int rpm=((double)contar/nPalas)/2.0*60000.0/(milisegundos);
+     float vel=rps;
+/*     
+     Serial.print("Radio  = ");Serial.println(radio);      
+     Serial.print("Radio en metros  = ");Serial.println((float)radioM);
+     Serial.print("Circunferencia  = ");Serial.println(circunferencia);
+     Serial.print("RPM  = ");Serial.println(rpm);
+     Serial.print("RPS  = ");Serial.println(rps);
+*/          
+     Serial.print("Vel  = ");Serial.print(circunferencia*vel);Serial.println(" m/s");
+     lcd.clear();
+     lcd.setCursor(0,0);
+     lcd.print("RPM = ");
+     lcd.print(rpm);
+     Serial.println("---------");
+     contar=0;
+     last=millis();
+  }
+}

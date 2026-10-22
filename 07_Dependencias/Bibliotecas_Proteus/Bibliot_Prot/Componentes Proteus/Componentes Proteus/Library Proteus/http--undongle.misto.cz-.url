@@ -1,0 +1,8 @@
+[DEFAULT]
+BASEURL=http://undongle.misto.cz/
+[DOC#6#7]
+BASEURL=http://undongle.newmail.ru/
+ORIGURL=/_MAIL_/
+[InternetShortcut]
+URL=http://undongle.misto.cz/
+Modified=303B611C5575C30176

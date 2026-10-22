@@ -1,0 +1,11 @@
+
+Endereço do site:
+
+https://www.swharden.com/wp/2013-04-14-simple-diy-ecg-pulse-oximeter-version-2/
+
+https://www.swharden.com/wp/2016-08-08-diy-ecg-with-1-op-amp/
+
+http://www.xtronical.com/basics/heart-beat-sensor-ecg-display/
+
+datasheet, que usa no arduino.
+
