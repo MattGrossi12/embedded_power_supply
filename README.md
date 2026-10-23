@@ -2,19 +2,27 @@
 
 # Fonte de bancada regulável com ajuste e monitoramento digital
 
+**Site do projeto:** [instruções de geração, prévia local e publicação no GitHub Pages](site/README.md).
+
 Projeto de Trabalho de Conclusão de Curso em **Engenharia Elétrica**, desenvolvido por **Matheus Grossi** no **Centro Universitário Feitep — UniFeitep**, em Maringá, em 2024, sob orientação do **Esp. Sérgio Carlos da Silva**.
 
 A proposta integra uma fonte de alimentação de bancada, circuitos de potência e uma interface com ESP32 e display TFT de 7 polegadas para ajustar a saída e apoiar os testes de circuitos eletrônicos. Este repositório reúne a monografia, os projetos eletrônicos, o firmware, os ensaios e os materiais utilizados no desenvolvimento.
 
-![Foto real do display TFT com o logo da UniFeitep](00_Imagens/2024-10-20_213114_display_TFT_logo_UniFeitep.jpeg)
+<p align="center">
+  <img src="00_Imagens/2024-10-20_213114_display_TFT_logo_UniFeitep.jpeg" alt="Foto real do display TFT com o logo da UniFeitep">
+</p>
 
 *Display do projeto com o logo da UniFeitep na tela de abertura.*
 
-![Protótipo da fonte de bancada montado no gabinete](00_Imagens/prototipo_fonte_gabinete.jpeg)
+<p align="center">
+  <img src="00_Imagens/prototipo_fonte_gabinete.jpeg" alt="Protótipo da fonte de bancada montado no gabinete">
+</p>
 
 *Protótipo da fonte montado no gabinete, com display TFT, botões de comando e bornes de saída no painel frontal.*
 
-![Menus da fonte apresentados na monografia](00_Imagens/figura_48_menus_da_fonte.png)
+<p align="center">
+  <img src="00_Imagens/figura_48_menus_da_fonte.png" alt="Menus da fonte apresentados na monografia">
+</p>
 
 *Menus da fonte — Figura 48 da monografia, p. 67 (página 68 do PDF). Fonte: elaborado pelo autor (2024).*
 
@@ -71,11 +79,15 @@ O caminho de alimentação compreende entrada CA, transformador abaixador, retif
 
 O display possui controlador de toque XPT2046, mas a implementação descrita no trabalho utiliza **botões físicos** para os comandos.
 
-![Diagrama de ligação da fonte principal](00_Imagens/figura_39_circuito_principal.png)
+<p align="center">
+  <img src="00_Imagens/figura_39_circuito_principal.png" alt="Diagrama de ligação da fonte principal">
+</p>
 
 *Circuito principal — Figura 39 da monografia, p. 60. Fonte: elaborado pelo autor (2024).*
 
-![Renderização tridimensional da PCB da fonte de 5 V](00_Imagens/pcb_fonte_5v_render.png)
+<p align="center">
+  <img src="00_Imagens/pcb_fonte_5v_render.png" alt="Renderização tridimensional da PCB da fonte de 5 V">
+</p>
 
 *Vista 3D da placa identificada como fonte de +5 V, disponível nos arquivos internos do projeto. A renderização representa o projeto da placa.*
 
@@ -129,23 +141,33 @@ Os apêndices B a E reúnem os esquemáticos e as vistas das placas das quatro f
 
 As imagens a seguir registram o layout, a fabricação e a montagem das placas do projeto.
 
-![Layout da placa principal no software de projeto](00_Imagens/layout_placa_principal.jpeg)
+<p align="center">
+  <img src="00_Imagens/layout_placa_principal.jpeg" alt="Layout da placa principal no software de projeto">
+</p>
 
 *Layout da PCB principal, com as trilhas, os pontos de conexão e a disposição dos componentes, incluindo o banco de cinco capacitores.*
 
-![Placa principal com trilhas de cobre antes da montagem](00_Imagens/placa_principal_trilhas.jpeg)
+<p align="center">
+  <img src="00_Imagens/placa_principal_trilhas.jpeg" alt="Placa principal com trilhas de cobre antes da montagem">
+</p>
 
 *Placa principal após a formação das trilhas de cobre, ainda sem os componentes, com identificação do projeto e o logo da UniFeitep.*
 
-![Montagem dos componentes na placa principal](00_Imagens/placa_principal_montagem.jpeg)
+<p align="center">
+  <img src="00_Imagens/placa_principal_montagem.jpeg" alt="Montagem dos componentes na placa principal">
+</p>
 
 *Etapa de montagem da placa principal: banco de cinco capacitores eletrolíticos, regulador LM723, resistores, trimpot e bornes de conexão.*
 
-![Outra vista da placa principal durante a montagem](00_Imagens/placa_principal_componentes.jpeg)
+<p align="center">
+  <img src="00_Imagens/placa_principal_componentes.jpeg" alt="Outra vista da placa principal durante a montagem">
+</p>
 
 *Outra vista da placa principal, mostrando os componentes instalados e os bornes destinados às conexões com os demais elementos da fonte.*
 
-![Conjunto das quatro placas das fontes auxiliares](00_Imagens/placas_fontes_auxiliares.jpeg)
+<p align="center">
+  <img src="00_Imagens/placas_fontes_auxiliares.jpeg" alt="Conjunto das quatro placas das fontes auxiliares">
+</p>
 
 *Quatro placas das fontes auxiliares durante a montagem, com capacitores, resistores, diodos, trimpots e bornes de conexão.*
 
@@ -314,7 +336,9 @@ O sketch usa a biblioteca **TFT_eSPI** e reúne a tela de abertura, os menus, o 
   </tbody>
 </table>
 
-![Display TFT mostrando duty cycle de 50% durante um ensaio](00_Imagens/2024-10-20_215023_display_TFT_duty_cycle_50_porcento.jpeg)
+<p align="center">
+  <img src="00_Imagens/2024-10-20_215023_display_TFT_duty_cycle_50_porcento.jpeg" alt="Display TFT mostrando duty cycle de 50% durante um ensaio">
+</p>
 
 *Registro de bancada de outubro de 2024: a interface mostra o indicador de duty cycle em 50%. A foto documenta essa etapa do desenvolvimento.*
 

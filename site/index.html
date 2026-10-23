@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050b16">
+  <meta name="description" content="Fonte de bancada com ESP32, interface TFT de 7 polegadas e controle PWM. Projeto, construção e ensaios do TCC de Matheus Grossi, UniFeitep, 2024.">
+  <title>Fonte de bancada · Matheus Grossi</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#visao-geral">Ir para o conteúdo</a>
+<header class="topbar">
+  <a class="brand" href="#inicio"><span class="brand-mark">MG<span>·</span></span><span>ENGENHARIA ELÉTRICA</span></a>
+  <a class="repo-link" href="https://github.com/MattGrossi12/embedded_power_supply">Repositório <span aria-hidden="true">↗</span></a>
+</header>
+<main>
+<section class="hero" id="inicio" aria-labelledby="titulo">
+  <div class="hero-mosaic" aria-hidden="true">
+    <img src="media/prototipo_fonte_gabinete.jpeg" alt="">
+    <img src="media/placa_principal_componentes.jpeg" alt="">
+    <img src="media/2024-10-20_215023_display_TFT_duty_cycle_50_porcento.jpeg" alt="">
+    <img src="media/placas_fontes_auxiliares.jpeg" alt="">
+  </div>
+  <div class="hero-content">
+    <p class="eyebrow"><span class="status-dot"></span> TRABALHO DE CONCLUSÃO DE CURSO · 2024</p>
+    <h1 id="titulo">Fonte de bancada<br><span>com ajuste digital.</span></h1>
+    <p class="hero-description">Desenvolvimento de uma fonte de alimentação regulável com comando por modulação por largura de pulso (PWM), microcontrolador ESP32 e interface TFT de 7 polegadas. O trabalho compreende o dimensionamento dos circuitos, a implementação do protótipo e a avaliação experimental da tensão de saída.</p>
+    <div class="tags"><span>ESP32</span><span>SSD1963</span><span>LM723</span><span>Proteus</span><span>C++ / Arduino</span></div>
+    <div class="actions"><a class="button primary" href="#arquitetura">Consultar o projeto <span aria-hidden="true">↓</span></a><a class="button" href="documents/monografia.pdf">Acessar a monografia <span aria-hidden="true">↗</span></a></div>
+    <p class="byline">Matheus Grossi <span>·</span> Engenharia Elétrica / UniFeitep<br>Orientação: Esp. Sérgio Carlos da Silva · Maringá, 2024</p>
+    <nav class="hero-index" aria-label="Índice do projeto">{{HERO_NAV}}</nav>
+  </div>
+  <div class="hero-foot"><span>PROJETO / CONSTRUÇÃO / ENSAIOS</span><a href="#visao-geral">Documentação técnica ↓</a></div>
+</section>
+<div class="documentation">
+  <aside class="sidebar"><a class="sidebar-title" href="#inicio">FONTE DE BANCADA<span>PORTFÓLIO TÉCNICO / 2024</span></a><nav aria-label="Seções da documentação">{{SIDE_NAV}}</nav><a class="sidebar-pdf" href="documents/monografia.pdf">Monografia completa ↗</a></aside>
+  <div class="sections">
+    <section id="visao-geral" class="chapter">
+      <p class="eyebrow">01 / VISÃO GERAL</p><h2>Objetivo e escopo do projeto</h2>
+      <p class="lead">O projeto tem como objetivo desenvolver uma fonte de alimentação de bancada com saída principal regulável, saídas auxiliares de tensão fixa e interface homem-máquina para o comando das funções de ajuste.</p>
+      <div class="spec-strip"><div><strong>0–40 <small>V</small></strong><span>Faixa prevista no projeto</span></div><div><strong>5 <small>A</small></strong><span>Capacidade prevista</span></div><div><strong>7 <small>pol.</small></strong><span>Display TFT · 800 × 480</span></div></div>
+      <p>O desenvolvimento compreende o dimensionamento dos circuitos, a elaboração dos esquemáticos, o projeto e a fabricação das placas de circuito impresso, a integração ao gabinete e a realização de ensaios em bancada. As saídas auxiliares previstas são de 3,3 V, 5 V, 12 V e 24 V.</p>
+      <div class="note"><span>ESPECIFICAÇÕES E VALIDAÇÃO EXPERIMENTAL</span><p>A faixa de 0 a 40 V e a capacidade de 5 A correspondem às especificações previstas no projeto. Os três ensaios apresentados na monografia adotam 32 V como referência máxima e avaliam a tensão de saída. A capacidade de fornecimento de corrente sob carga não foi demonstrada por esses ensaios.</p></div>
+      {{PROTOTYPE}}
+    </section>
+    <section id="arquitetura" class="chapter">
+      <p class="eyebrow">02 / ARQUITETURA</p><h2>Arquitetura de potência e controle</h2>
+      <p class="lead">A alimentação é processada por estágios de transformação, retificação em ponte, filtragem capacitiva e regulação. O ESP32 é responsável pela geração do sinal PWM e pela execução da interface de comando.</p>
+      <div class="signal-flow" aria-label="Caminho de potência"><span>Entrada CA<small>127 / 220 V</small></span><b aria-hidden="true">→</b><span>Transformador<small>32 VCA / 5 A</small></span><b aria-hidden="true">→</b><span>Retificação<small>Ponte GBU1510</small></span><b aria-hidden="true">→</b><span>Filtragem<small>5 × 1.000 µF</small></span><b aria-hidden="true">→</b><span>Regulação<small>LM723 + potência</small></span></div>
+      <p>A fonte principal emprega o regulador LM723 em configuração flutuante, associado a uma etapa externa de potência. As fontes auxiliares utilizam reguladores LM317 com redes resistivas e trimpots para definição das tensões de saída. A interação com o usuário ocorre por botões físicos; o controlador de toque XPT2046, presente no módulo do display, não é utilizado na implementação descrita na monografia.</p>
+      {{CIRCUIT}}
+      <div class="section-link"><a href="https://github.com/MattGrossi12/embedded_power_supply/tree/main/02_Hardware/Esquematicos">Consultar os esquemáticos do projeto ↗</a></div>
+    </section>
+    <section id="construcao" class="chapter">
+      <p class="eyebrow">03 / CONSTRUÇÃO</p><h2>Projeto e fabricação das placas</h2>
+      <p class="lead">As placas de circuito impresso foram projetadas no Proteus. Os registros documentam o leiaute das trilhas, a fabricação das placas e a montagem dos componentes da fonte principal e das fontes auxiliares.</p>
+      <div class="gallery two">{{BUILD_GALLERY}}</div>
+      <h3>Fontes auxiliares de tensão fixa</h3><p>Os apêndices B a E da monografia apresentam os esquemáticos e as representações das placas das fontes de 3,3 V, 5 V, 12 V e 24 V. As reproduções abaixo correspondem às páginas completas desses apêndices.</p>
+      <div class="gallery four">{{AUX_GALLERY}}</div>
+    </section>
+    <section id="interface" class="chapter">
+      <p class="eyebrow">04 / INTERFACE E FIRMWARE</p><h2>Interface de comando e firmware</h2>
+      <p class="lead">O firmware selecionado utiliza a biblioteca TFT_eSPI para apresentação dos menus e do indicador de ciclo de trabalho do sinal PWM. Os botões físicos permitem navegar entre as opções, alterar o ajuste e habilitar ou desabilitar a saída PWM.</p>
+      <div class="gallery two">{{INTERFACE_GALLERY}}</div>
+      {{FIRMWARE_TABLE}}
+      <div class="note"><span>CORRESPONDÊNCIA ENTRE DOCUMENTAÇÃO E IMPLEMENTAÇÃO</span><p>A monografia descreve resolução PWM de 10 bits e um painel com cinco botões, enquanto o firmware selecionado utiliza 12 bits e três botões. Esses registros correspondem a etapas distintas do desenvolvimento. Nessa versão do código, as funções de monitoramento e de acionamento individual das fontes fixas permanecem sem implementação, e a conexão Wi-Fi é representada por mensagens na interface.</p></div>
+      <p>O arquivo de configuração disponível para a biblioteca TFT_eSPI contém definições relativas ao controlador ILI9341 e requer adequação ao SSD1963. A compilação e a operação do firmware no protótipo não foram novamente verificadas durante a organização dos arquivos do repositório.</p>
+      <a class="text-link" href="https://github.com/MattGrossi12/embedded_power_supply/tree/main/03_Firmware/final_version">Consultar o firmware selecionado ↗</a>
+    </section>
+    <section id="pinagem" class="chapter">
+      <p class="eyebrow">05 / CONEXÕES DO DISPLAY</p><h2>Interface elétrica do display</h2>
+      <p class="lead">A comunicação entre o controlador gráfico SSD1963 e o ESP32 utiliza um barramento paralelo de 8 bits. As conexões de dados, alimentação e controle são reproduzidas conforme as Figuras 43, 44 e 45 da monografia, p. 64.</p>
+      <div class="pinout-grid">{{PINOUT_TABLES}}</div>
+      <p class="caption">Conforme a p. 65 da monografia, a alimentação do display pode ser provida por uma fonte externa. A utilização dessa pinagem requer a conferência das conexões físicas e da configuração correspondente no firmware.</p>
+      <details><summary>Identificação física do conector do display</summary>{{CONNECTOR}}</details>
+    </section>
+    <section id="ensaios" class="chapter">
+      <p class="eyebrow">06 / ENSAIOS E RESULTADOS</p><h2>Avaliação experimental da tensão de saída</h2>
+      <p class="lead">Os ensaios apresentados no capítulo 4 da monografia comparam os valores de tensão medidos com os valores esperados para ajustes de 10%, 50% e 100%, considerando uma referência máxima de 32 V.</p>
+      {{RESULTS_TABLE}}
+      <div class="gallery three">{{TEST_GALLERY}}</div>
+      <div class="note"><span>INTERPRETAÇÃO E LIMITAÇÕES DOS RESULTADOS</span><p>Os desvios observados indicam a necessidade de calibração da relação entre o ciclo de trabalho do PWM e a tensão de saída. Os três pontos avaliados não permitem caracterizar integralmente a faixa de regulação ou a capacidade de corrente sob carga. Adicionalmente, a seção 3.11 menciona um dimensionamento de 10 A, enquanto a seção 3.3 e a especificação do transformador indicam 5 A. A determinação da capacidade efetiva requer a revisão do dimensionamento e a realização de ensaios de carga.</p></div>
+      <h3>Registros audiovisuais dos ensaios</h3><p>Os cinco vídeos disponíveis no repositório documentam etapas dos ensaios em bancada. Como os nomes dos arquivos não especificam as condições de ajuste, os registros são identificados pela sequência de arquivos, sem atribuição a pontos de operação específicos.</p>
+      {{VIDEO_TABLE}}
+      <video id="test-video" controls preload="none" aria-label="Reprodução dos registros de teste"><p>Seu navegador não oferece reprodução de vídeo. Utilize os links dos arquivos na tabela.</p></video>
+      <p class="caption" id="video-status" aria-live="polite">Selecione “Reproduzir” para carregar um registro.</p>
+    </section>
+    <section id="documentos" class="chapter">
+      <p class="eyebrow">07 / DOCUMENTAÇÃO E CONTINUIDADE</p><h2>Documentação técnica e trabalhos futuros</h2>
+      <p class="lead">A documentação compreende a monografia, os projetos eletrônicos, o código-fonte e os registros experimentais. Esses materiais fundamentam a descrição do sistema e delimitam o alcance dos resultados apresentados.</p>
+      <div class="resource-list"><a href="documents/monografia.pdf"><span>01 / DOCUMENTO ACADÊMICO<strong>Monografia completa</strong><small>Matheus Grossi · UniFeitep · 2024</small></span><b>↗</b></a><a href="https://github.com/MattGrossi12/embedded_power_supply/tree/main/02_Hardware"><span>02 / HARDWARE<strong>Esquemáticos e placas</strong><small>Projetos, renderizações e fabricação</small></span><b>↗</b></a><a href="https://github.com/MattGrossi12/embedded_power_supply/tree/main/03_Firmware"><span>03 / SOFTWARE EMBARCADO<strong>Firmware e experimentos</strong><small>Versão selecionada e etapas anteriores</small></span><b>↗</b></a><a href="documents/comparacao_tensoes.xlsx"><span>04 / ENSAIOS<strong>Planilha de comparação</strong><small>Arquivo original de apoio aos testes</small></span><b>↓</b></a><a href="documents/README.md"><span>05 / DOCUMENTAÇÃO<strong>README do repositório</strong><small>Snapshot incluído nesta geração do site</small></span><b>↓</b></a></div>
+      <h3>Perspectivas de continuidade</h3><ul class="next-steps"><li>Calibração da relação entre o ciclo de trabalho do PWM e a tensão de saída, com indicação do valor ajustado em volts.</li><li>Integração da medição de corrente e implementação de limite ajustável de corrente.</li><li>Implementação de proteção com desligamento da saída em condições de sobrecarga ou curto-circuito.</li><li>Integração da medição de temperatura e implementação de proteção térmica.</li></ul>
+      <p class="reference">GROSSI, Matheus. <cite>Projeto e construção de uma fonte de bancada regulável com ajuste e monitoramento digital.</cite> Trabalho de Conclusão de Curso em Engenharia Elétrica — Centro Universitário Feitep, Maringá, 2024. As páginas citadas seguem a numeração impressa da monografia.</p>
+      <p class="caption">As imagens e os documentos incluídos neste site têm origem nos arquivos do repositório. <a href="assets/inventario.json">Consultar inventário e hashes dos artefatos.</a></p>
+    </section>
+    <footer><a class="brand-mark" href="#inicio">MG<span>·</span></a><p>Matheus Grossi<br><span>Engenharia Elétrica · UniFeitep · 2024</span></p><a href="#inicio">Voltar ao início ↑</a></footer>
+  </div>
+</div>
+</main>
+<dialog id="image-viewer" aria-labelledby="viewer-caption"><div class="viewer-toolbar"><a id="viewer-original" href="#">Abrir original ↗</a><button id="viewer-close" type="button" aria-label="Fechar imagem">Fechar ×</button></div><img id="viewer-image" alt=""><p id="viewer-caption"></p></dialog>
+</body>
+</html>

@@ -1,0 +1,50 @@
+name: Publicar portfólio no GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'scripts/pages/**'
+      - '00_Imagens/**'
+      - '01_Texto_academico/Monografia/**'
+      - '05_Ensaios_e_resultados/**'
+      - 'README.md'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Gerar e validar o site
+        run: python scripts/pages/build.py --output _site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v4
